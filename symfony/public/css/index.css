@@ -1,0 +1,13 @@
+/* General CSS */
+header {
+  background-color: #1F2233;
+  height: 200px;
+}
+
+header > nav > a {
+  color: white;
+}
+
+body {
+  background-color: #C5E2E2;
+}
