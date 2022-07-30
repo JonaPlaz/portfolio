@@ -1,16 +1,11 @@
 /* General CSS */
-header {
-  background-color: #353b49;
-}
-
-
 header>nav {
   display: flex;
   justify-content: space-between;
   padding: 1.4em;
 }
 
-header>nav>div>a {
+header>nav>div>a>i {
   cursor: pointer;
 }
 
@@ -27,13 +22,14 @@ header>nav>div>a>i:active {
 }
 
 body {
-  background-color: #C5E2E2;
+  background-color: #353b49;
   font-family: 'Roboto', sans-serif;
 }
 
 /* Class CSS Header */
 .nav_name {
   color: white;
+  cursor: pointer;
   font-size: 2em;
   text-transform: uppercase;
 }
@@ -89,8 +85,8 @@ body {
   padding: 5em 0 5em 0;
 }
 
-.stack > p {
-  font-size: 4em;
+.stack>p {
+  font-size: 3.5em;
   margin: 0 0.8em 0 0.8em;
 }
 
@@ -108,4 +104,19 @@ body {
 
 .stack_symfony {
   color: #E5E8E4;
+}
+
+/* main CSS */
+.cv>p {
+  color: white;
+  font-size: 1.7em;
+  font-weight: 100;
+  letter-spacing: 1.5px;
+  text-align: center;
+}
+
+.cv>p>a {
+  color: #F9D423;
+  font-weight: 300;
+  text-decoration: none;
 }
