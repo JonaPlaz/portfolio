@@ -13,29 +13,30 @@ body {
 /* Class CSS Header */
 .nav_name {
   color: white;
-  cursor: pointer;
+  cursor: default;
   font-size: 2em;
   text-transform: uppercase;
 }
 
 .nav_links {
-  font-size: 1.8em;
+  display: flex;
+  justify-content: space-around;
+  font-size: 1.7em;
 }
 
-.nav_links>a {
-  margin-right: 1.2em;
+.nav_links>div {
+  margin-left: 1.5em;
 }
 
-.nav_links>a>i {
-  cursor: pointer;
+.nav_links>div>a>i {
   transition: 0.3s ease-out;
 }
 
-.nav_links>a>i:hover {
+.nav_links>div>a>i:hover {
   transform: scale(1.1)
 }
 
-.nav_linksa>i:active {
+.nav_links>div>a>i:active {
   transform: scale(0.9)
 }
 
