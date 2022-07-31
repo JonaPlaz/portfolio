@@ -1,0 +1,120 @@
+/* General CSS */
+header>nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.4em;
+}
+
+body {
+  background-color: #353b49;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Class CSS Header */
+.nav_name {
+  color: white;
+  cursor: default;
+  font-size: 2em;
+  text-transform: uppercase;
+}
+
+.nav_links {
+  display: flex;
+  justify-content: space-around;
+  font-size: 1.7em;
+}
+
+.nav_links>div {
+  margin-left: 1.5em;
+}
+
+.nav_links>div>a>i {
+  transition: 0.3s ease-out;
+}
+
+.nav_links>div>a>i:hover {
+  transform: scale(1.1)
+}
+
+.nav_links>div>a>i:active {
+  transform: scale(0.9)
+}
+
+.nav_linkedin {
+  color: #0072b1;
+}
+
+.nav_github {
+  color: #9DA7B3;
+}
+
+.nav_youtube {
+  color: #c4302b
+}
+
+.presentation {
+  color: white;
+  letter-spacing: 3px;
+  line-height: 5em;
+  margin-top: 6em;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.hello {
+  font-size: 2.5em;
+  font-weight: 700;
+}
+
+.i_am {
+  font-size: 3em;
+  font-weight: 100;
+}
+
+.developer {
+  font-size: 3em;
+  font-weight: 300;
+}
+
+.stack {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 5em 0 5em 0;
+}
+
+.stack>p {
+  font-size: 3.5em;
+  margin: 0 0.8em 0 0.8em;
+}
+
+.stack_js {
+  color: #f7df1e;
+}
+
+.stack_react {
+  color: #61DAFB;
+}
+
+.stack_php {
+  color: #787CB4;
+}
+
+.stack_symfony {
+  color: #E5E8E4;
+}
+
+/* main CSS */
+.cv>p {
+  color: white;
+  font-size: 1.7em;
+  font-weight: 100;
+  letter-spacing: 1.5px;
+  text-align: center;
+}
+
+.cv>p>a {
+  color: #F9D423;
+  font-weight: 300;
+  text-decoration: none;
+}
