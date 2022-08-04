@@ -8,6 +8,7 @@ header>nav {
 body {
   background-color: #353b49;
   font-family: 'Roboto', sans-serif;
+  height: 100vh;
 }
 
 /* Class CSS Header */
@@ -52,13 +53,23 @@ body {
   color: #c4302b
 }
 
+
+/* main CSS */
+/*centrer le main verticalement */
+main {
+  line-height: 5em;
+  margin: 10% 0;
+}
+
 .presentation {
   color: white;
   letter-spacing: 3px;
-  line-height: 5em;
-  margin-top: 6em;
   text-align: center;
   text-transform: capitalize;
+}
+
+.presentation>span {
+  font-size: 3em;
 }
 
 .hello {
@@ -67,12 +78,10 @@ body {
 }
 
 .i_am {
-  font-size: 3em;
   font-weight: 100;
 }
 
 .developer {
-  font-size: 3em;
   font-weight: 300;
 }
 
@@ -80,12 +89,11 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  padding: 5em 0 5em 0;
 }
 
 .stack>p {
-  font-size: 3.5em;
-  margin: 0 0.8em 0 0.8em;
+  font-size: 3em;
+  margin: 0 0.8em;
 }
 
 .stack_js {
@@ -104,7 +112,6 @@ body {
   color: #E5E8E4;
 }
 
-/* main CSS */
 .cv>p {
   color: white;
   font-size: 1.7em;
@@ -117,4 +124,37 @@ body {
   color: #F9D423;
   font-weight: 300;
   text-decoration: none;
+}
+
+
+@media screen and (max-width: 1024px) {
+
+  .nav_name {
+    font-size: 3em;
+  }
+
+  .nav_links {
+    font-size: 2.5em;
+  }
+
+  main {
+    line-height: 6em;
+    margin: 50% 0;
+  }
+
+  .presentation>span {
+    font-size: 4em;
+  }
+  
+  .hello {
+    font-size: 3.5em;
+  }
+
+  .stack>p {
+    font-size: 4em;
+  }
+
+  .cv>p {
+    font-size: 3em;
+  }
 }
