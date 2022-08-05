@@ -104,6 +104,11 @@ main {
   color: #61DAFB;
 }
 
+.separator {
+  color: #a58a01;
+  font-weight: lighter;
+}
+
 .stack_php {
   color: #787CB4;
 }
@@ -134,7 +139,7 @@ main {
   }
 
   .nav_links {
-    font-size: 2.5em;
+    font-size: 3em;
   }
 
   main {
