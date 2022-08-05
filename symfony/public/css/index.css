@@ -163,3 +163,35 @@ main {
     font-size: 3em;
   }
 }
+
+@media screen and (max-height: 770px) {
+
+  .nav_name {
+    font-size: 2em;
+  }
+
+  .nav_links {
+    font-size: 2em;
+  }
+
+  main {
+    line-height: 6em;
+    margin: 0;
+  }
+
+  .presentation>span {
+    font-size: 2.5em;
+  }
+  
+  .hello {
+    font-size: 2em;
+  }
+
+  .stack>p {
+    font-size: 2.5em;
+  }
+
+  .cv>p {
+    font-size: 2em;
+  }
+}
