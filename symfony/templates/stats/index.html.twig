@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Stats - Jona Web Developer
+{% endblock %}
+
+{% block body %}
+
+	<ul class="visitors">
+		{% for visitor in visitors %}
+			<li>{{ visitor.ip }} {{ visitor.version }}  {{ visitor.numberConsultations }}</li>
+		{% endfor %}
+	</ul>
+
+{% endblock %}
