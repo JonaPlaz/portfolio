@@ -12,6 +12,7 @@ class HomeController extends AbstractController
     public function index(): Response
     {
 
+      // path to CV page
       $cvPath = 'cv';
 
         return $this->render('home/index.html.twig', [
