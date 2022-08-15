@@ -5,10 +5,19 @@
 
 {% block body %}
 
-	<ul class="visitors">
+	<table class="visitors_table">
+		<tr class="visitors_row_titles">
+			<td>visitor ip</td>
+			<td>cv version</td>
+			<td>nb of consults</td>
+		</tr>
 		{% for visitor in visitors %}
-			<li>{{ visitor.ip }} {{ visitor.version }}  {{ visitor.numberConsultations }}</li>
+			<tr class="visitors_rows_content">
+				<td>{{ visitor.ip }}</td>
+				<td>{{ visitor.version }}</td>
+				<td>{{ visitor.numberConsultations }}</td>
+			</tr>
 		{% endfor %}
-	</ul>
+	</table>
 
 {% endblock %}
