@@ -28,7 +28,7 @@ class CvController extends AbstractController
     $cvPdf = 'id/cv/cv-jonathan-plazanet.pdf';
 
     // IP of CV checker
-    $ipVisitor = $request->server->get('SERVER_ADDR');
+    $ipVisitor = $request->server->get('REMOTE_ADDR');
 
     // Search if Ip is already connected
     $cv = $this->cvRepository->findOneBy(['ip' => $ipVisitor]);
