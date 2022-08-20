@@ -20,7 +20,7 @@ class CvController extends AbstractController
   ) {
   }
 
-  #[Route('/cv', name: 'app_cv')]
+  #[Route('/moncv', name: 'app_cv')]
   public function index(Request $request): Response
   {
 
