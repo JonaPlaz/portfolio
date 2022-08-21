@@ -3,10 +3,11 @@
 namespace App\Entity;
 
 use App\Repository\VisitsRepository;
+use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: VisitsRepository::class)]
-class Visits
+class Visit
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -27,6 +28,12 @@ class Visits
 
     #[ORM\ManyToOne(inversedBy: 'visits')]
     private ?Cv $cv = null;
+
+    public function __construct(
+      )
+      {
+        $this->createdAt = new DateTimeImmutable();
+      }
 
     public function getId(): ?int
     {

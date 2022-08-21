@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Entity\Visits;
+use App\Entity\Visit;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -14,14 +14,14 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Visits[]    findAll()
  * @method Visits[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class VisitsRepository extends ServiceEntityRepository
+class VisitRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Visits::class);
+        parent::__construct($registry, Visit::class);
     }
 
-    public function add(Visits $entity, bool $flush = false): void
+    public function add(Visit $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class VisitsRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Visits $entity, bool $flush = false): void
+    public function remove(Visit $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 

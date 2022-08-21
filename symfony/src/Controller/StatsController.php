@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Repository\CvRepository;
+use App\Repository\VisitRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -11,7 +11,7 @@ class StatsController extends AbstractController
 {
 
   public function __construct(
-    private CvRepository $cv,
+    private VisitRepository $visitRepository,
   )
   {
   }
@@ -20,10 +20,10 @@ class StatsController extends AbstractController
     #[Route('/stats', name: 'app_stats')]
     public function index(): Response
     {
-      $visitors = $this->cv->findAll();
+      $visits = $this->visitRepository->findAll();
 
         return $this->render('stats/index.html.twig', [
-            'visitors' => $visitors,
+            'visits' => $visits,
         ]);
     }
 }
