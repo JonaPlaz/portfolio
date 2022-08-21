@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\CvRepository;
 use DateTimeImmutable;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CvRepository::class)]
@@ -29,10 +31,14 @@ class Cv
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updated_at = null;
 
+    #[ORM\OneToMany(mappedBy: 'cv', targetEntity: Visits::class)]
+    private Collection $visits;
+
     public function __construct(
     )
     {
       $this->created_at = new DateTimeImmutable();
+      $this->visits = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -96,6 +102,36 @@ class Cv
     public function setUpdatedAt(?\DateTimeImmutable $updated_at): self
     {
         $this->updated_at = $updated_at;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Visits>
+     */
+    public function getVisits(): Collection
+    {
+        return $this->visits;
+    }
+
+    public function addVisit(Visits $visit): self
+    {
+        if (!$this->visits->contains($visit)) {
+            $this->visits[] = $visit;
+            $visit->setCv($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVisit(Visits $visit): self
+    {
+        if ($this->visits->removeElement($visit)) {
+            // set the owning side to null (unless already changed)
+            if ($visit->getCv() === $this) {
+                $visit->setCv(null);
+            }
+        }
 
         return $this;
     }
