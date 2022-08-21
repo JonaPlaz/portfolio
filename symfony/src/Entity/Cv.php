@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\CvRepository;
 use DateTimeImmutable;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CvRepository::class)]
@@ -17,22 +19,20 @@ class Cv
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $version = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $ip = null;
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\Column(nullable: true)]
-    private ?int $number_consultations = null;
+    private ?\DateTimeImmutable $updatedAt = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?\DateTimeImmutable $created_at = null;
-
-    #[ORM\Column(nullable: true)]
-    private ?\DateTimeImmutable $updated_at = null;
+    #[ORM\OneToMany(mappedBy: 'cv', targetEntity: Visit::class)]
+    private Collection $visits;
 
     public function __construct(
     )
     {
-      $this->created_at = new DateTimeImmutable();
+      $this->createdAt = new DateTimeImmutable();
+      $this->visits = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -52,50 +52,56 @@ class Cv
         return $this;
     }
 
-    public function getIp(): ?string
-    {
-        return $this->ip;
-    }
-
-    public function setIp(?string $ip): self
-    {
-        $this->ip = $ip;
-
-        return $this;
-    }
-
-    public function getNumberConsultations(): ?int
-    {
-        return $this->number_consultations;
-    }
-
-    public function setNumberConsultations(?int $number_consultations): self
-    {
-        $this->number_consultations = $number_consultations;
-
-        return $this;
-    }
-
     public function getCreatedAt(): ?\DateTimeImmutable
     {
-        return $this->created_at;
+        return $this->createdAt;
     }
 
-    public function setCreatedAt(?\DateTimeImmutable $created_at): self
+    public function setCreatedAt(?\DateTimeImmutable $createdAt): self
     {
-        $this->created_at = $created_at;
+        $this->createdAt = $createdAt;
 
         return $this;
     }
 
     public function getUpdatedAt(): ?\DateTimeImmutable
     {
-        return $this->updated_at;
+        return $this->updatedAt;
     }
 
-    public function setUpdatedAt(?\DateTimeImmutable $updated_at): self
+    public function setUpdatedAt(?\DateTimeImmutable $updatedAt): self
     {
-        $this->updated_at = $updated_at;
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Visits>
+     */
+    public function getVisits(): Collection
+    {
+        return $this->visits;
+    }
+
+    public function addVisit(Visit $visit): self
+    {
+        if (!$this->visits->contains($visit)) {
+            $this->visits[] = $visit;
+            $visit->setCv($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVisit(Visit $visit): self
+    {
+        if ($this->visits->removeElement($visit)) {
+            // set the owning side to null (unless already changed)
+            if ($visit->getCv() === $this) {
+                $visit->setCv(null);
+            }
+        }
 
         return $this;
     }

@@ -9,13 +9,13 @@
 		<tr class="visitors_row_titles">
 			<td>visitor ip</td>
 			<td>cv version</td>
-			<td>nb of consults</td>
+			<td>nb of visits</td>
 		</tr>
-		{% for visitor in visitors %}
+		{% for visit in visits %}
 			<tr class="visitors_rows_content">
-				<td>{{ visitor.ip }}</td>
-				<td>{{ visitor.version }}</td>
-				<td>{{ visitor.numberConsultations }}</td>
+				<td>{{ visit.ip }}</td>
+				<td>{{ visit.cv.version }}</td>
+				<td>{{ visit.numberOfVisits }}</td>
 			</tr>
 		{% endfor %}
 	</table>
