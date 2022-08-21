@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Cv;
+use App\Entity\Visit;
 use App\Repository\CvRepository;
+use App\Repository\VisitRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,6 +19,7 @@ class CvController extends AbstractController
   public function __construct(
     private EntityManagerInterface $em,
     private CvRepository $cvRepository,
+    private VisitRepository $visitRepository,
   ) {
   }
 
@@ -25,35 +28,37 @@ class CvController extends AbstractController
   {
 
     // path to cv file
-    $cvPdf = 'id/cv/cv-jonathan-plazanet.pdf';
+    $cvV1 = 'id/cv/cv-jonathan-plazanet-v1.pdf';
 
     // IP of CV checker
-    $ipVisitor = $request->server->get('REMOTE_ADDR');
+    $ipVisit = $request->server->get('REMOTE_ADDR');
 
     // Search if Ip is already connected
-    $cv = $this->cvRepository->findOneBy(['ip' => $ipVisitor]);
-    
-    if ($cv) {
-      $numberConsultations = $cv->getNumberConsultations();
-      $numberConsultations++;
-      $cv
-        ->setNumberConsultations($numberConsultations)
-        ->setUpdatedAt(new DateTimeImmutable());
-      $this->em->flush();
+    $visit = $this->visitRepository->findOneBy(['ip' => $ipVisit]);
+    if ($visit) {
+      if ($visit->getCv()->getVersion() === 'v1') {
+        $visits = $visit->getNumberOfVisits();
+        $visits++;
+        $visit
+          ->setNumberOfVisits($visits)
+          ->setUpdatedAt(new DateTimeImmutable());
+      }
     } else {
-      $cv = new Cv;
+      $visit = new Visit;
 
-      $cv
-        ->setVersion('v1')
-        ->setIp($ipVisitor)
-        ->setNumberConsultations(1);
+      $cv = $this->cvRepository->findOneBy(['id' => 1]);
+      
+      $visit
+        ->setIp($ipVisit)
+        ->setNumberOfVisits(1)
+        ->setCv($cv);
 
-      $this->em->persist($cv);
-      $this->em->flush();
+      $this->em->persist($visit);
     }
+    $this->em->flush();
 
     return $this->render('cv/index.html.twig', [
-      'cv_pdf' => $cvPdf,
+      'cv_v1' => $cvV1,
     ]);
   }
 }
