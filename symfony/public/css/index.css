@@ -131,6 +131,34 @@ main {
   text-decoration: none;
 }
 
+/* Login page */
+.login_form {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.3em;
+  line-height: 2em;
+  margin: 10% 40% 0 40%;
+  width: 20%;
+}
+
+.login_form>input {
+  color: #353b49;
+  font-size: 1em;
+  padding: 0.3em;
+}
+
+.login_button {
+  background-color: #F9D423;
+  border: none;
+  color: #353b49;
+  cursor: pointer;
+  font-size: 0.8em;
+  font-weight: 700;
+  margin-top: 1.1em;
+  padding: 0.5em;
+}
+
 /* Stats page */
 .visitors_table {
   border: solid white 1px;
