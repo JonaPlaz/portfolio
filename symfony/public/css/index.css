@@ -13,10 +13,14 @@ body {
 
 /* Class CSS Header */
 .nav_name {
-  color: white;
   cursor: default;
   font-size: 2em;
   text-transform: uppercase;
+}
+
+.nav_name > a {
+  color: white;
+  text-decoration: none;
 }
 
 .nav_links {
@@ -199,6 +203,13 @@ main {
 .visitors_rows_content>td {
   border: solid white 1px;
   padding: 10px;
+}
+
+.visitors_total {
+  color: white;
+  line-height: 2em;
+  margin-top: 1em;
+  text-align: center;
 }
 
 @media screen and (max-width: 1024px) {

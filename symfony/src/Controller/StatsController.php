@@ -16,14 +16,25 @@ class StatsController extends AbstractController
   {
   }
 
-
     #[Route('/stats', name: 'app_stats')]
     public function index(): Response
     {
       $visits = $this->visitRepository->findAll();
 
+      $totalVisitsNumber = null;
+      $totalVisitsIp = null;
+
+      foreach ($visits as $visit) {
+        $visitNumber = $visit->getNumberOfVisits();
+        $visitIp = $visit->getIp();
+        $totalVisitsNumber += $visitNumber;
+        $totalVisitsIp++;
+      }
+
         return $this->render('stats/index.html.twig', [
             'visits' => $visits,
+            'total_visits_number' => $totalVisitsNumber,
+            'total_ip_number' => $totalVisitsIp,
         ]);
     }
 }

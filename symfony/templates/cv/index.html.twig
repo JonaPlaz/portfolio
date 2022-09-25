@@ -1,9 +1,31 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}CV - Jona Web Developer
+			{% endblock %}
+		</title>
 
-{% block title %}CV - Jona Web Developer{% endblock %}
+		{% block stylesheets %}
+			<link rel="stylesheet" href="{{ asset('css/reset.css') }}">
+			<link rel="stylesheet" href="{{ asset('css/index.css') }}">
+			<link rel="preconnect" href="https://fonts.googleapis.com">
+			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+			<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;1,100;1,700&display=swap" rel="stylesheet">
+			<link rel="icon" href="{{ asset('id/images/favicon/JONA.png') }}" type="image/x-icon"/>
+		{% endblock %}
 
-{% block body %}
+		{% block javascripts %}
+			<script src="https://kit.fontawesome.com/aedc4a5914.js" crossorigin="anonymous"></script>
+		{% endblock %}
+	</head>
+	<body>
 
-<iframe src="{{ asset(cv_v1) }}" height="100%" width="100%"></iframe>
+		{% block body %}
 
-{% endblock %}
+			<iframe src="{{ asset(cv_v1) }}" height="100%" width="100%"></iframe>
+
+		{% endblock %}
+	</body>
+</html>
